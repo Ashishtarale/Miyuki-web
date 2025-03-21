@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .scratch-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.active {
+            background-color: #ff4757;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="scratch-container">
+        <button onclick="showNextCard()" class="card" id="card1">Card 1</button>
+        <button onclick="showNextCard()" class="card" id="card2">Card 2</button>
+        <button onclick="showNextCard()" class="card" id="card3">Card 3</button>
+        <button onclick="showNextCard()" class="card" id="card4">Card 4</button>
+    </div>
+
+    <script>
+        function showNextCard() {
+            const cards = document.querySelectorAll('.card');
+            let activeIndex = -1;
+
+            // Reset all cards to hidden state
+            cards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // If there is a previous active index, remove it
+            if (activeIndex !== -1) {
+                const prevCard = document.getElementById(`card${activeIndex}`);
+                prevCard.style.display = 'none';
+            }
+
+            // Show the next active card
+            let newIndex;
+            if (cards.length > 1) {
+                newIndex = cards.length - 1;
+            } else {
+                newIndex = 0;
+            }
+
+            if (newIndex !== activeIndex && newIndex < cards.length) {
+                const currentCard = document.getElementById(`card${activeIndex + 1}`);
+                currentCard.style.display = 'block';
+                
+                // Show the new card
+                const nextCard = document.getElementById(`card${newIndex + 1}`);
+                nextCard.style.display = 'block';
+            } else {
+                // If no more cards, hide all
+                cards.forEach(card => {
+                    card.style.display = 'none';
+                });
+            }
+
+            activeIndex = newIndex;
+        }
+    </script>
+</body>
+</html>

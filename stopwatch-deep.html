@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .stopwatch-container {
+            text-align: center;
+        }
+
+        .stopwatch {
+            font-size: 80px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .laps {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch-container">
+        <div class="stopwatch">00:00.00</div>
+        <div class="buttons">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="stopTimer()">Stop</button>
+            <button onclick="resetTimer()">Reset</button>
+            <button onclick="lap()">Lap</button>
+        </div>
+        <div class="laps" id="laps">Laps: </div>
+    </div>
+
+    <script>
+        let time = 0;
+        let isRunning = false;
+        let lapTimes = [];
+        const timerDisplay = document.querySelector('.stopwatch');
+        const lapsDisplay = document.getElementById('laps');
+
+        function updateDisplay() {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor((time % 60) / 1);
+            const milliseconds = (time % 1).toFixed(3);
+
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2,
+'0')}.${milliseconds}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                setInterval(() => {
+                    time += 1/1000;
+                    updateDisplay();
+                }, 1);
+            }
+        }
+
+        function stopTimer() {
+            isRunning = false;
+        }
+
+        function resetTimer() {
+            time = 0;
+            isRunning = false;
+            lapTimes = [];
+            updateDisplay();
+            lapsDisplay.textContent = "Laps: ";
+        }
+
+        function lap() {
+            if (isRunning) {
+                const currentTime = time;
+                lapTimes.push(currentTime);
+                updateLapsDisplay();
+            }
+        }
+
+        function updateLapsDisplay() {
+            lapsDisplay.textContent = "Laps: " + lapTimes.map(time =>
+                `${Math.floor(time / 60)}:${(time % 60).toFixed(3)}`).join(', ');
+        }
+    </script>
+</body>
+</html>
