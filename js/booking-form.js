@@ -53,9 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
     loadingMessage.innerHTML = "Loading...";
 
     fetch("php/bookingForm.php", {
-      method: "push",
+      method: "POST", // ✅ Correct method
       body: formData,
     })
+    
       .then((response) => response.text())
       .then((data) => {
         fields.forEach((field) => field.classList.remove("success"));
