@@ -2,8 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   const form = document.querySelector(".booking-form");
-  const resetBtn = document.getElementById("reset");
   const loadingMessage = document.querySelector(".loading");
+
+  if (!form) {
+    console.error("Form not found in the DOM.");
+    return;
+  }
 
   function showError(input) {
     input.classList.add("error");
@@ -38,8 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "lastname",
       "email",
       "phone",
-      "service",
-      "staff",
       "date",
     ].map((id) => document.querySelector(`.${id}`));
 
@@ -58,24 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         fields.forEach((field) => field.classList.remove("success"));
         loadingMessage.innerHTML =
-          data === "success"
+          data.trim() === "success"
             ? "<span style='color:#48af4b'>Mail sent successfully.</span>"
-            : "<span style='color:#ff5607'>Mail not sent.</span>";
+            : "<span style='color:#ff5607'>Mail not sent. Please try again.</span>";
         setTimeout(() => (loadingMessage.style.display = "none"), 3000);
       })
       .catch((error) => {
+        console.error("Fetch error:", error);
         loadingMessage.innerHTML =
-          "<span style='color:#ff5607'>Error occurred.</span>";
+          "<span style='color:#ff5607'>Error occurred. Please check the console.</span>";
         setTimeout(() => (loadingMessage.style.display = "none"), 3000);
       });
   }
 
-  function resetForm() {
-    document.querySelectorAll(".form-control").forEach((input) => {
-      input.classList.remove("error", "success");
-    });
-  }
-
   form.addEventListener("submit", submitForm);
-  resetBtn.addEventListener("click", resetForm);
 });

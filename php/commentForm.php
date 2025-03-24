@@ -3,7 +3,7 @@
 $name  = $_REQUEST["name"];
 $email = $_REQUEST["email"];
 $message = $_REQUEST["message"];
-$to    = "ashish.tarale@seraphyq.com"; // ENTER YOUR EMAIL ADDRESS
+$to    = "you@yourdomain.com"; // ENTER YOUR EMAIL ADDRESS
 if (isset($email) && isset($name)) {
     $email_subject = "$name sent you a comment via YOUR SITE NAME"; // ENTER YOUR EMAIL SUBJECT
 	$headers = "MIME-Version: 1.0" . "\r\n";

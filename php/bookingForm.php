@@ -4,8 +4,6 @@ $firstname  = $_REQUEST["firstname"];
 $lastname  = $_REQUEST["lastname"];
 $email = $_REQUEST["email"];
 $phone  = $_REQUEST["phone"];
-$service = $_REQUEST["service"];
-$staff  = $_REQUEST["staff"];
 $date   = $_REQUEST["date"];
 $to    = "ashishtarale002@gmail.com"; // ENTER YOUR EMAIL ADDRESS
 if (isset($firstname) && isset($email)) {
@@ -16,8 +14,6 @@ if (isset($firstname) && isset($email)) {
         'Reply-To: ' . $email . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 	$msg     = "
-	Service: $service,
-	Staff: $staff,
 	Appointment Date: $date,
 	First Name: $firstname,
 	Last Name: $lastname,
