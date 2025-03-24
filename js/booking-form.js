@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "email",
       "phone",
       "date",
-    ].map((id) => document.querySelector(`.${id}`));
+    ].map((id) => document.querySelector(`.${id}`)).filter(Boolean); // Remove null fields
 
     if (!validateFields(fields)) return;
 
