@@ -7,7 +7,7 @@ $phone  = $_REQUEST["phone"];
 $date   = $_REQUEST["date"];
 $to    = "ashishtarale002@gmail.com"; // ENTER YOUR EMAIL ADDRESS
 if (isset($firstname) && isset($email)) {
-    $email_subject = "$firstname $lastname sent you a message via YOUR SITE NAME"; // ENTER YOUR EMAIL SUBJECT
+    $email_subject = "$firstname $lastname sent you a message via Miyuki World"; // ENTER YOUR EMAIL SUBJECT
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type:text/plain; charset=iso-8859-1" . "\r\n";
 	$headers = 'From: ' . $firstname ."\r\n" .
