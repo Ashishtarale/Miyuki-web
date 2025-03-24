@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadingMessage.innerHTML = "Loading...";
 
     fetch("php/bookingForm.php", {
-      method: "push",
+      method: "get",
       body: formData,
     })
       .then((response) => response.text())
