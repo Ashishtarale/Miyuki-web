@@ -122,26 +122,26 @@
 					<!-- BOOKING FORM -->
 					<div class="row justify-content-center">	
 						<div class="col-lg-10 col-xl-9">
-							<form name="bookingForm" class="row booking-form">
+							<form action="process_booking.php" method="POST" class="row booking-form">
 
 								<!-- Form Input -->
 				                <div class="col-lg-6">
-				                	<input type="text" name="firstname" class="form-control firstname" placeholder="First Name*" required>
+									<input type="text" id="name" class="form-control" placeholder="Full Name*" name="name" required>
 				                </div>
 
 				                <!-- Form Input -->
 				                <div class="col-lg-6">
-				                	<input type="text" name="lastname" class="form-control lastname" placeholder="Last Name*" required>
+									<input type="email" id="email" class="form-control" placeholder="Email ID*" name="email" required>
 				                </div>
 				                  
 				                <!-- Form Input -->        
 				                <div class="col-lg-6">
-				                	<input type="email" name="email" class="form-control email" placeholder="Email Address*" required> 
+									<input type="tel" id="phone" class="form-control" placeholder="Phone Number*" name="phone" required> 
 				                </div>
 
 				                <!-- Form Input -->   
 				                <div class="col-lg-6">
-				                	<input type="tel" name="phone" class="form-control phone" placeholder="Phone Number*" required> 
+									<input id="datetimepicker" type="text" name="date" class="form-control date" placeholder="Appointment Date*" required>
 				                </div>
 
 				                <!-- Form Select -->
@@ -174,13 +174,13 @@
 				                </div> -->
 
 				                <!-- Form Input -->
-				                <div class="col-md-12">
+				                <!-- <div class="col-md-12">
 				                	<input id="datetimepicker" type="text" name="date" class="form-control date" placeholder="Appointment Date*" required>
-				                </div>
+				                </div> -->
 				                                            
 				                <!-- Form Button -->
 				                <div class="col-md-12 text-center">  
-				                	<button type="submit" class="btn btn--tra-black hover--black submit">Book Appointment</button> 
+				                	<button type="submit"  value="Submit" class="btn btn--tra-black hover--black submit">Book Appointment</button> 
 				                </div>
 				                                                              
 				                <!-- Form Message -->

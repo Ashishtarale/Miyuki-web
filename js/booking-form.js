@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
-  const form = document.querySelector(".booking-form");
+  const form = document.querySelector(".booking-form-remove");
   const loadingMessage = document.querySelector(".loading");
 
   if (!form) {
